@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ImageController@index');
+Route::post('/image', 'ImageController@store')->name('simple.add');
+Route::post('/image_ajax', 'ImageController@ajaxstore')->name('ajaxupload.action');
+
