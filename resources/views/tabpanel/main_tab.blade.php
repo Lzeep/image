@@ -1,7 +1,21 @@
 <div class="tab">
-    <button class="tablinks" onclick="openCity(event, 'galery')">Galery</button>
-    <button class="tablinks" onclick="openCity(event, 'employee')">Employee</button>
-    <button class="tablinks" onclick="openCity(event, 'aboutUs')">About US</button>
+    <ul class="" role="tablist">
+        <li role="presentation" class="active">
+            <a href="#galery" aria-controls="galery" role="tab" data-toggle="tab">
+                Graphic Designing
+            </a>
+        </li>
+        <li role="presentation">
+            <a href="#employee" aria-controls="employee" role="tab" data-toggle="tab">
+                Mobile App Development
+            </a>
+        </li>
+        <li role="presentation">
+            <a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">
+                Website Development
+            </a>
+        </li>
+    </ul>
 </div>
 <div id="galery" class="tabcontent">
     @include('tabpanel.galery')
@@ -11,7 +25,7 @@
     @include('tabpanel.employee')
 </div>
 
-<div id="aboutUs" class="tabcontent">
+<div id="settings" class="tabcontent">
     @include('tabpanel.aboutus')
 </div>
 
@@ -61,18 +75,29 @@
 @push('scripts')
 
     <script>
-        function openCity(evt, cityName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(cityName).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
+        $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+            tab = e.target;
+
+            console.log(tab)
+            $.get( "api/tabcontent/" + tab, function( data ) {
+                console.log($( tab ).html( data ));
+            });
+        });
+        // function openCity(evt, cityName) {
+        //     console.log(cityName)
+        //     var i, tabcontent, tablinks;
+        //     tabcontent = document.getElementsByClassName("tabcontent");
+        //     for (i = 0; i < tabcontent.length; i++) {
+        //         tabcontent[i].style.display = "none";
+        //     }
+        //     tablinks = document.getElementsByClassName("tablinks");
+        //     for (i = 0; i < tablinks.length; i++) {
+        //         tablinks[i].className = tablinks[i].className.replace(" active", "");
+        //     }
+        //     document.getElementById(cityName).style.display = "block";
+        //     evt.currentTarget.className += " active";
+        //
+        // }
     </script>
+
 @endpush
