@@ -59,7 +59,6 @@
     </form>
     <form action="{{route('simple.add')}}" method="post" enctype="multipart/form-data">
         @csrf
-
         <table class="table">
             <tr>
                 <td width="40%" align="right"><label for="photo_input">Фотография</label></td>
@@ -107,8 +106,6 @@
                     $('#message').html(data.message);
                     $('#message').addClass(data.class_name);
                     $('#galere').append(data.addition_html);
-
-
                 }
             })
         });

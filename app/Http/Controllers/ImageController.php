@@ -41,7 +41,6 @@ class ImageController extends Controller
         $image->image = ImageUploader::upload(request('image'), 'image', 'image', 50);
         $image->save();
         return redirect()->back();
-
     }
 
     public function ajaxstore(Request $request)
