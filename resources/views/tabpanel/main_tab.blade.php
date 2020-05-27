@@ -83,7 +83,6 @@
                 console.log($( tab ).html( data ));
             });
         });
-        // uytiuytiu
         // function openCity(evt, cityName) {
         //     console.log(cityName)
         //     var i, tabcontent, tablinks;
