@@ -78,7 +78,7 @@
         $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
             tab = e.target;
 
-            console.log(tab)
+            console.log(tab);
             $.get( "api/tabcontent/" + tab, function( data ) {
                 console.log($( tab ).html( data ));
             });
